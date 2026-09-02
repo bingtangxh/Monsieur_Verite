@@ -1,0 +1,65 @@
+﻿<!--
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+PARTICULAR PURPOSE.
+
+Copyright (c) Microsoft Corporation. All rights reserved
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+       <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>-->
+        <title>Monsieur Verite About</title>
+        <!--<link rel="stylesheet" href="//Microsoft.WinJS.1.0/css/ui-light.css" />-->
+        <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+        <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+        <script>
+            (function () {
+                "use strict";
+                var app = WinJS.Application;
+                var activation = Windows.ApplicationModel.Activation;
+                var page = WinJS.UI.Pages.define("/pages/about.html", {
+
+                    ready: function (element, options) {
+                        // Register the handlers for dismissal
+
+                    },
+                    unload: function () {
+
+                    },
+                });
+                
+            })();
+        </script>
+    </head>
+    <body>
+        <div data-win-control="WinJS.UI.SettingsFlyout" aria-label="About flyout" data-win-options="{settingsCommandId:'about',width:'medium'}">
+            <!-- Use either 'win-ui-light' or 'win-ui-dark' depending on the contrast between the header title and background color -->
+            <div class="win-ui-dark win-header" style="background-color:#6A1422;"> <!-- Background color reflects app's personality -->
+               <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton" style="color:white; outline-color:white; border-color:white;"></button>
+               <div class="win-label" style="color:white;">关于 About</div>
+               <!--<img src="../images/smallTile-sdk.png" style="position: absolute; right: 40px;"/>-->
+            </div>
+            <div class="win-content ">
+                <div class="win-settings-section">
+                    <h2>Monsieur Verite</h2> 
+                    <p>
+                        本应用的部分代码基于 Microsoft Windows 8 App Samples，<br />
+                        This application contains portions of code from Microsoft Windows 8 App Samples,<br />
+                        © Microsoft Corporation.<br />
+                        启动画面和图标来自米游社用户你是谁谁呀<br />
+                    </p>
+                    <input type="button" value="MS-LPL License" onclick="
+                        Windows.ApplicationModel.Package.current.installedLocation
+                        .getFileAsync('MS-LPL.rtf')
+                        .then(function (file) {
+                            return Windows.System.Launcher.launchFileAsync(file);
+                        });
+                    ">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

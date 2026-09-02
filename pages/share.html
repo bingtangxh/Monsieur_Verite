@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Monsieur Verite</title>
+
+        <!-- WinJS references -->
+        <link rel="stylesheet" href="//Microsoft.WinJS.1.0/css/ui-light.css" />
+        <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+        <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+        <!-- SDK sample framework references -->
+        <link rel="stylesheet" type="text/css" href="/css/share.css" />
+        <script src="/js/share.js"></script>
+    </head>
+    <body id="appBody" role="application">
+        <style>
+            hr.dashed {
+            }
+        </style>
+        <div id="rootGrid" class="targetRootGrid">
+        <div id="content">
+            <div class="targetContent">
+                <strong>快速链接 ID：</strong><span id="selectedQuickLinkId">此应用不是通过上一次的快速链接激活的。</span>
+                <br /><br />
+                <div>以下是从源应用接收的数据包：</div>
+                <br />
+                <h3>数据包属性</h3>
+                <strong>标题：</strong><span id="title">（无标题）</span><br />
+                <strong>描述：</strong><span id="description">（无描述）</span><br />
+                <div id="thumbnailArea" class="hidden"><strong>缩略图：</strong><br /><img class="thumbnail" alt="（缩略图）" id="thumbnailImage" /><br /></div>
+
+                <br />
+                <h3>数据包内容</h3>
+
+                <div id="contentValue" >
+                    <div id="htmlContentArea" class="hidden"><strong>HTML: </strong><br /><iframe id="htmlContent" style="width:600px; height:auto; display:none" ></iframe></div>
+                </div>
+                <div id="imageArea" class="hidden"><strong>位图：</strong><br /><img id="imageHolder" style="max-height:200px" /></div>
+
+                <p>分享目标应用在分享任务成功完成后应汇报已完成。此 API 适用于快速分享和长时间运行的分享。</p>
+                <div id="quickLinkArea">
+                    <p>在汇报完成时，您可以选择添加一个快速链接，以便用户更容易重复他们最常分享的方式。这可以节省他们每次分享给某个人或某个小组时都要在您的应用中选择的时间。</p>
+                    <input type="checkbox" id="addQuickLink" value="addQuickLink" /> 添加快速链接（可选）
+                    <br />
+                    <div id="quickLinkFields" class="hidden">
+                        <div id="quickLinkError" class="hidden"></div>
+                        QuickLink Id: <input type="text" id="quickLinkId" value="ABC123"/><br />
+                        Title: <input type="text" id="quickLinkTitle" value="Email John Smith"/><br />
+                        Icon: <img alt="QuickLink icon" src="images/user.png" id="quickLinkIcon" />
+                    </div>
+                </div>
+                <br />
+                <button id="reportCompleted">汇报“已完成”</button>
+                <br />
+                <hr class="dashed" />
+                <h3 id="expandoClick">启用长时间共享支持&#8192;<span id="expandoGlyph" style="font-family:'Segoe UI Symbol'">&#57361;</span></h3>
+                <div id="extendedSharing" class="hidden">
+                    如果应用支持的是上传可能需要一些时间的格式，例如图像或视频，则需要此 API。
+                    用户应该能关掉应用，同时在后台继续上传，完成其他操作。
+                    为了使关闭行为正常工作，您需要向分享平台汇报“已完成获取用户输入”。
+                    在您调用此方法后，用户可以返回分享面板，在分享进度列表中查看您的应用。
+                    <br /><br />
+                    <button id="reportStarted">汇报“分享已开始”</button>
+                    <hr class="dashed">
+                    <br /><br />
+                    这个 API 是可选的，帮助 Windows 优化系统的资源使用。
+                    如果您已经完成了从数据包中提取数据，您应该汇报“数据已检索”，以便 Windows 可以根据需要暂停或终止来源应用，以回收系统资源。
+                    <br /><br />
+                    <button id="reportDataRetrieved">汇报“数据已检索”</button>
+                    <hr class="dashed">
+                    <br /><br />
+                    这个 API 也是可选的，帮助 Windows 优化系统的资源使用。
+                    如果您调用了 Windows Runtime 后台传输类来上传您的内容，则应汇报此信息。
+                    然后，Windows 可以在必要时暂停您的应用以回收系统资源。
+                    如果您使用此 API，那么应该先汇报“开始”，后汇报这个“已提交至后台任务”。
+                    <br /><br />
+                    <button id="reportSubmittedBackgroundTask">汇报“已提交至后台任务”</button>
+                    <hr class="dashed">
+                    <br /><br />
+                    如果由于任何原因，长时间运行的共享未成功并且在后台给失败了，应用应当是汇报“失败”，并包含一条关于用户如何恢复错误的消息。
+                    当用户返回共享面板时，他们可以在进度列表中看到您的消息。
+                    如果您的应用在前台可见，那绝对不能汇报“错误”。
+                    <br /><br />
+                    <span>错误消息：</span>
+                    <input type="text" id="extendedShareErrorMessage" value="服务器繁忙，请稍后再试。" />
+                    <br /><br />
+                    <button id="reportError">汇报“错误”</button>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+
