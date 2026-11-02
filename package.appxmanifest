@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="BingtangXH.Monsieur-Verite" Version="1.0.0.2" Publisher="CN=ninei" />
+  <Identity Name="BingtangXH.Monsieur-Verite" Version="1.0.0.3" Publisher="CN=BingtangXH" />
   <Properties>
     <DisplayName>Monsieur_Verite</DisplayName>
     <PublisherDisplayName>BingtangXH</PublisherDisplayName>

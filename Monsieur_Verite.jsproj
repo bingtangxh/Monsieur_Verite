@@ -50,6 +50,7 @@
     <PackageCertificateKeyFile>Monsieur_Verite_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxPackageDir>C:\AppPackages\</AppxPackageDir>
+    <PackageCertificateThumbprint>E16CC7F48ED769F5DB1F8BF0BFAD63640115869A</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -66,6 +67,7 @@
     <Content Include="js\navigator.js" />
     <Content Include="js\share.js" />
     <Content Include="logo.png" />
+    <None Include="Monsieur_Verite_TemporaryKey.pfx" />
     <Content Include="MS-LPL.rtf" />
     <Content Include="pages\about.html" />
     <Content Include="pages\home\home.css" />
@@ -76,7 +78,6 @@
     <Content Include="smalllogo.png" />
     <Content Include="splashscreen.png" />
     <Content Include="storelogo.png" />
-    <None Include="Monsieur_Verite_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
